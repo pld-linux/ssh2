@@ -3,7 +3,7 @@ Summary:	Secure Shell - encrypts network communications with ipv6 support
 Summary(pl):	Secure Shell - kodowane po³±czenie sieciowe ze wsparciem dla IPv6
 Name:		%{base_name}2
 Version:	3.2.5
-Release:	0.1
+Release:	1.1
 Group:		Applications
 License:	free use on Linux (see LICENSE)
 Source0:	ftp://ftp.ssh.com/pub/ssh/%{base_name}-%{version}.tar.gz
