@@ -5,8 +5,6 @@ Name:		%{base_name}2
 Version:	2.0.13
 Release:	3
 Group:		Applications
-Group(de):	Applikationen
-Group(pl):	Aplikacje
 License:	Non-commercially distributable
 Source0:	ftp://ftp.cs.hut.fi/pub/ssh/%{base_name}-%{version}.tar.gz
 Source1:	sshd.init
@@ -55,8 +53,6 @@ musisz zainstalowaæ tak¿e pakiet ssh-clients oraz ssh-server.
 Summary:	Clients for connecting to Secure Shell servers
 Summary(pl):	Klient pozwalaj±cy na pod³±czenie siê do serwera Secure Shell
 Group:		Applications
-Group(de):	Applikationen
-Group(pl):	Aplikacje
 Requires:	%{name} = %{version} 
 
 %description clients
@@ -70,8 +66,6 @@ Oprogramowanie klienckie dla ssh.
 Summary:	Secure Shell protocol server (sshd)
 Summary(pl):	Serwer (sshd) protoko³u Secure Shell
 Group:		Daemons
-Group(de):	Server
-Group(pl):	Serwery
 Requires:	pam >= 0.66
 Prereq:		/sbin/chkconfig
 Requires:	%{name} = %{version} 
@@ -91,8 +85,6 @@ klientów do Twojego hosta.
 Summary:	Extra command for the secure shell protocol suite
 Summary(pl):	Dodatkowe komendy dla obs³ugi protoko³u Secure Shell
 Group:		Applications
-Group(de):	Applikationen
-Group(pl):	Aplikacje
 Requires:	%{name} = %{version}
 
 %description extras
