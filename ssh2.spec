@@ -113,8 +113,6 @@ bibliotek X11).
 %build
 aclocal
 autoconf
-
-LDFLAGS="-s"; export LDFLAGS 
 %configure \
 	--with-etcdir=%{_sysconfdir} \
 	--with-libwrap \
@@ -127,9 +125,7 @@ LDFLAGS="-s"; export LDFLAGS
 %{__make}
 
 %install
-
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT/{%{_mandir},etc/{ssh,pam.d,rc.d/init.d}}
 
 %{__make} \
@@ -146,8 +142,7 @@ install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/sshd_config
 rm $RPM_BUILD_ROOT%{_mandir}/man8/sshd.8
 cp $RPM_BUILD_ROOT%{_mandir}/man8/sshd2.8 $RPM_BUILD_ROOT%{_mandir}/man8/sshd.8
 
-gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man[18]/* \
-	CHANGES BUG.REPORT SSH2.QUICKSTART README* FAQ
+gzip -9fn CHANGES BUG.REPORT SSH2.QUICKSTART README* FAQ
 
 %clean
 rm -rf $RPM_BUILD_ROOT
