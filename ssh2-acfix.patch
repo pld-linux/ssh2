@@ -1,0 +1,69 @@
+--- ssh-3.2.3/configure.in.orig	Wed Jan 22 20:28:43 2003
++++ ssh-3.2.3/configure.in	Sun Apr  6 20:57:17 2003
+@@ -829,9 +829,6 @@
+ 
+ AC_CHECK_FUNCS(key_secretkey_is_set)
+ 
+-if test -z "$no_libnsl"; then
+-  AC_CHECK_LIB(nsl, main)
+-fi
+ if test -n "$test_libinet"; then
+   AC_CHECK_LIB(inet, inet_network)
+ fi
+@@ -943,7 +943,7 @@
+ dnl
+ dnl
+ dnl
+-  LIBOBJS="$LIBOBJS inet_ntoa.o"
++  AC_LIBOBJ([inet_ntoa])
+ dnl
+   AC_MSG_WARN("using internal inet_ntoa")
+ fi
+@@ -1787,7 +1784,7 @@
+   AC_CHECK_LIB(sun, getpwnam)
+ fi
+ if test -z "$no_libbsd"; then
+-  AC_CHECK_LIB(bsd, openpty)
++  AC_SEARCH_LIBS(openpty,[util bsd])
+ fi
+ AC_CHECK_LIB(util, login, AC_DEFINE(HAVE_LIBUTIL_LOGIN)
+ 			  LIBS="$LIBS -lutil")
+@@ -2286,7 +2286,7 @@
+     # Macintosh A/UX tweaks - prune LIB = -L/usr/local/lib, exceeds ld capacity
+     #   add -lposix to it, needed for termio stuff
+     LIBS="-lposix"
+-    AC_DEFINE(_POSIX_SOURCE)
++    AC_DEFINE(_POSIX_SOURCE, ,[use POSIX])
+     ;;
+   *-*-sysv4*)
+     AC_CHECK_LIB(gen, openlog)
+@@ -2313,9 +2310,6 @@
+ 
+ export CFLAGS CC
+ 
+-if test -z "$no_libnsl"; then
+-  AC_CHECK_LIB(nsl, main)
+-fi
+ if test -z "$no_libsocket"; then
+   AC_CHECK_LIB(socket, socket)
+ fi
+@@ -2324,7 +2318,7 @@
+ AC_CHECK_HEADERS(lastlog.h utmp.h shadow.h sys/select.h sys/ioctl.h)
+ AC_CHECK_HEADERS(utime.h ulimit.h sys/resource.h netdb.h netgroup.h)
+ 
+-AC_CHECK_LIB(bsd, bcopy)
++AC_SEARCH_LIBS(bcopy, bsd)
+ 
+ AC_CHECK_FUNCS(gettimeofday times getrusage ftruncate)
+ AC_CHECK_FUNCS(strchr memcpy clock fchmod ulimit umask)
+--- ssh-3.2.3/acinclude.m4.orig	Wed Jan 22 20:28:43 2003
++++ ssh-3.2.3/acinclude.m4	Sun Apr  6 21:02:33 2003
+@@ -76,7 +76,7 @@
+  AC_MSG_ERROR(Cannot cross-compile without BYTE_ORDER set in sys/param.h.))
+ fi])
+ if test $ac_cv_c_bigendian = yes; then
+-  AC_DEFINE(WORDS_BIGENDIAN)
++  AC_DEFINE(WORDS_BIGENDIAN, ,[Big endian])
+ fi
+ ])
+ ])])
