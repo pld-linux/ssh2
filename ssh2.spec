@@ -53,13 +53,13 @@ musisz zainstalowaæ tak¿e pakiet ssh-clients oraz ssh-server.
 Summary:	Clients for connecting to Secure Shell servers
 Summary(pl):	Klient pozwalaj±cy na pod³±czenie siê do serwera Secure Shell
 Group:		Applications
-Requires:	%{name} = %{version} 
+Requires:	%{name} = %{version}
 
 %description clients
 This package includes the clients necessary to make encrypted
 connections to SSH servers.
 
-%description -l pl clients
+%description clients -l pl
 Oprogramowanie klienckie dla ssh.
 
 %package server
@@ -68,7 +68,7 @@ Summary(pl):	Serwer (sshd) protoko³u Secure Shell
 Group:		Daemons
 Requires:	pam >= 0.66
 Prereq:		/sbin/chkconfig
-Requires:	%{name} = %{version} 
+Requires:	%{name} = %{version}
 Prereq:		rc-scripts
 
 %description server
@@ -76,7 +76,7 @@ This package contains the secure shell daemon and its documentation.
 The sshd is the server part of the secure shell protocol and allows
 ssh clients to connect to your host.
 
-%description -l pl server
+%description server -l pl
 Pakiet zawiera daemon Secure Shell oraz dokumentacjê. Sshd jest
 serwerem protoko³u Secure Shell umo¿liwiaj±cym pod³±czanie siê
 klientów do Twojego hosta.
@@ -94,7 +94,7 @@ separate package to allow clean install of ssh even on X11-less and
 perl-less machines (make_ssh_known_hosts is a perl script and
 ssh-askpass uses X11 libraries.
 
-%description -l pl extras
+%description extras -l pl
 Pakiet zawiera skrypt perlowy make_ssh_known_hosts, ssh-askpass oraz
 dokumentacjê. Zosta³y przeniesione do oddzielnego pakietu co
 umo¿liwi³o instalowanie ssh nawet na maszynach nie posiadaj±cych X11
@@ -119,7 +119,7 @@ autoconf
 	--with-pam \
 	--without-kerberos5 \
 	--without-socks5 \
-	--without-rsaref  
+	--without-rsaref
 %{__make}
 
 %install
@@ -166,7 +166,7 @@ if [ ! -f %{_sysconfdir}/ssh_host_key -o ! -s %{_sysconfdir}/ssh_host_key ]; the
 	else
 		%{_bindir}/ssh-keygen -b 1024 -f %{_sysconfdir}/ssh_host_key -N '' >&2
 	fi
-fi  
+fi
 
 %preun server
 if [ "$1" = 0 ]; then
@@ -176,7 +176,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.gz READM* FAQ.gz 
+%doc CHANGES.gz READM* FAQ.gz
 
 %attr(755,root,root) %{_bindir}/ssh-keygen*
 #%attr(4755,root,root) %{_bindir}/ssh-singer2
