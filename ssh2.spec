@@ -2,12 +2,12 @@
 Summary:	Secure Shell - encrypts network communications with ipv6 support
 Summary(pl):	Secure Shell - kodowane po³±czenie sieciowe ze wsparciem dla IPv6
 Name:		%{base_name}2
-Version:	3.2.3
+Version:	3.2.5
 Release:	0.1
 Group:		Applications
 License:	free use on Linux (see LICENSE)
 Source0:	ftp://ftp.ssh.com/pub/ssh/%{base_name}-%{version}.tar.gz
-# Source0-md5:	d74afd27a5df00ae8fbbe066ec82c88a
+# Source0-md5:	0d9da1d79e4ce9cff44daf93e5b66a11
 Source1:	sshd.init
 Source2:	ssh.pamd
 Source3:	sshd.conf
@@ -121,7 +121,7 @@ u¿ywa bibliotek X11).
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{%{_mandir},etc/{ssh,pam.d,rc.d/init.d}}
+install -d $RPM_BUILD_ROOT{%{_mandir},/etc/{ssh,pam.d,rc.d/init.d}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
