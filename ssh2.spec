@@ -19,7 +19,7 @@ URL:		http://www.cs.hut.fi/ssh/
 BuildRequires:	gmp-devel
 BuildRequires:	zlib-devel
 BuildRequires:	xauth
-BuildRoot:	/tmp/%{base_name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	_prefix	/usr
 
