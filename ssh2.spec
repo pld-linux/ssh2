@@ -109,7 +109,7 @@ u¿ywa bibliotek X11).
 %patch -p0
 
 %build
-aclocal
+%{__aclocal}
 %{__autoconf}
 %configure \
 	--with-etcdir=%{_sysconfdir} \
