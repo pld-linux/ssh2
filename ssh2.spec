@@ -199,7 +199,7 @@ fi
 %attr(755,root,root) %{_sbindir}/sshd*
 %{_mandir}/man8/*
 
-%attr(750,root,root) %config /etc/rc.d/init.d/sshd
+%attr(754,root,root) %config /etc/rc.d/init.d/sshd
 
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/sshd_config
 %attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/*
