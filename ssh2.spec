@@ -1,5 +1,5 @@
 %define	base_name	ssh
-Summary:	Secure Shell - encrypts network communications with ipv6 support.
+Summary:	Secure Shell - encrypts network communications with ipv6 support
 Summary(pl):	Secure Shell - kodowane po³±czenie sieciowe ze wsparciem dla IPv6
 Name:		%{base_name}2
 Version:	2.0.13
