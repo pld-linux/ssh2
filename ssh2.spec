@@ -38,7 +38,7 @@ ssh-clients and ssh-server to really use ssh.
 
 %description -l pl
 Ssh (Secure Shell) jest programem s³u¿±cym do logowania siê na zdaln±
-maszynê i do wykonywania na niej komend. Polecany jest jako zamiennik
+maszynê i do wykonywania na niej poleceñ. Polecany jest jako zamiennik
 dla rlogin i rsh poniewa¿ koduje ca³± transmisjê. Poza tym pozawala na
 forwardowanie a przy okazji i kodowanie transmisji X11. Ta wersja ma
 wsparcie dla PAM.
@@ -79,8 +79,8 @@ serwerem protoko³u Secure Shell umo¿liwiaj±cym pod³±czanie siê
 klientów do Twojego hosta.
 
 %package extras
-Summary:	Extra command for the secure shell protocol suite
-Summary(pl):	Dodatkowe komendy dla obs³ugi protoko³u Secure Shell
+Summary:	Extra commands for the secure shell protocol suite
+Summary(pl):	Dodatkowe polecenia dla obs³ugi protoko³u Secure Shell
 Group:		Applications
 Requires:	%{name} = %{version}
 
