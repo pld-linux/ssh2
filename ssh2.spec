@@ -3,7 +3,7 @@ Summary:	Secure Shell - encrypts network communications with ipv6 support.
 Summary(pl):	Secure Shell - kodowane po³±czenie sieciowe ze wsparciem dla IPv6
 Name:		%{base_name}2
 Version:	2.0.13
-Release:	2
+Release:	3
 Group:		Applications
 Group(de):	Applikationen
 Group(pl):	Aplikacje
@@ -203,7 +203,7 @@ fi
 %attr(754,root,root) %config /etc/rc.d/init.d/sshd
 
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/sshd_config
-%attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/*
+%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/pam.d/*
 
 %files extras
 %defattr(644,root,root,755)
