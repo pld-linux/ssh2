@@ -110,7 +110,7 @@ u¿ywa bibliotek X11).
 
 %build
 aclocal
-autoconf
+%{__autoconf}
 %configure \
 	--with-etcdir=%{_sysconfdir} \
 	--with-libwrap \
