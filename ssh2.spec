@@ -51,6 +51,7 @@ musisz zainstalowaæ tak¿e pakiet ssh-clients oraz ssh-server.
 Summary:	Clients for connecting to Secure Shell servers
 Summary(pl):	Klient pozwalaj±cy na pod³±czenie siê do serwera Secure Shell
 Group:		Applications
+Provides:	ssh-clients
 Requires:	%{name} = %{version}
 
 %description clients
@@ -64,6 +65,7 @@ Oprogramowanie klienckie dla ssh.
 Summary:	Secure Shell protocol server (sshd)
 Summary(pl):	Serwer (sshd) protoko³u Secure Shell
 Group:		Daemons
+Provides:	ssh-server
 Requires:	pam >= 0.66
 Prereq:		/sbin/chkconfig
 Requires:	%{name} = %{version}
