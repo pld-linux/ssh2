@@ -132,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/{%{_mandir},etc/{ssh,pam.d,rc.d/init.d}}
 
-make \
+%{__make} \
 	DESTDIR=$RPM_BUILD_ROOT \
 	install
 
