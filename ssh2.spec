@@ -9,7 +9,7 @@ Group(pl):	Narzêdzia
 Copyright:	Non-commercially distributable
 Source0:	ftp://ftp.cs.hut.fi/pub/ssh/%{base_name}-%{version}.tar.gz
 Source1:	sshd.init
-Source2:	ssh.pam
+Source2:	ssh.pamd
 Source3:	sshd.conf
 Source4:	ssh.conf
 Patch0:		ssh2-install-fix.patch
