@@ -30,15 +30,16 @@ case "$1" in
   start)
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/sshd ]; then
-		show Starting sshd
+		msg_starting sshd
 		daemon sshd -h /etc/ssh/ssh_host_key
 	else
-		echo "sshd already is running"
+		msg_Already_Running sshd
+		exit 1
 	fi
 	touch /var/lock/subsys/sshd
 	;;
   stop)
-	show Stopping sshd
+	msg_stopping sshd
 	killproc sshd
 	rm -f /var/run/sshd.pid
 	rm -f /var/lock/subsys/sshd
