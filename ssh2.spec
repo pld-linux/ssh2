@@ -70,7 +70,7 @@ Group(pl):	Serwery
 Requires:	pam >= 0.66
 Prereq:		/sbin/chkconfig
 Requires:	%{name} = %{version} 
-Requires:	rc-scripts
+Prereq:		rc-scripts
 
 %description server
 This package contains the secure shell daemon and its documentation.
