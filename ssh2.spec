@@ -124,7 +124,7 @@ LDFLAGS="-s"; export LDFLAGS
 	--without-kerberos5 \
 	--without-socks5 \
 	--without-rsaref  
-make
+%{__make}
 
 %install
 
