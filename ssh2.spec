@@ -16,9 +16,9 @@ Patch0:		ssh2-install-fix.patch
 #Patch9:		ssh-pam.patch
 #Patch10:	ssh-pam_env+expire.patch
 URL:		http://www.cs.hut.fi/ssh/
-BuildPrereq:	gmp-devel
-BuildPrereq:	zlib-devel
-BuildPrereq:	xauth
+BuildRequires:	gmp-devel
+BuildRequires:	zlib-devel
+BuildRequires:	xauth
 BuildRoot:	/tmp/%{base_name}-%{version}-root
 
 %define	_prefix	/usr
