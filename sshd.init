@@ -1,17 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 #
 # chkconfig: 345 55 45
 # description: sshd (secure shell daemon) is a server part of the ssh suite.
 #	Ssh can be used for remote login, remote file copying, TCP port
 #	forwarding etc. Ssh offers strong encryption and authentication.
 #
-export PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
 # Source function library.
 . /etc/rc.d/init.d/functions
 
-# define nicelevel for running sshd
-#NICE="nice -n 1"
+# Nice level for running sshd
+if [ -f /etc/sysconfig/sshd ]; then
+    . /etc/sysconfig/sshd
+fi    
 
 # See how we were called.
 case "$1" in
