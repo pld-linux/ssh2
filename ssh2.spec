@@ -4,9 +4,10 @@ Summary(pl):	Secure Shell - kodowane po³±czenie sieciowe ze wsparciem dla IPv6
 Name:		%{base_name}2
 Version:	2.0.13
 Release:	2
-Group:		Utilities
-Group(pl):	Narzêdzia
-Copyright:	Non-commercially distributable
+Group:		Applications
+Group(de):	Applikationen
+Group(pl):	Aplikacje
+License:	Non-commercially distributable
 Source0:	ftp://ftp.cs.hut.fi/pub/ssh/%{base_name}-%{version}.tar.gz
 Source1:	sshd.init
 Source2:	ssh.pamd
@@ -16,6 +17,8 @@ Patch0:		ssh2-install-fix.patch
 #Patch9:		ssh-pam.patch
 #Patch10:	ssh-pam_env+expire.patch
 URL:		http://www.cs.hut.fi/ssh/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gmp-devel
 BuildRequires:	zlib-devel
 BuildRequires:	xauth
@@ -25,39 +28,40 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Ssh (Secure Shell) a program for logging into a remote machine and for
-executing commands in a remote machine.  It is intended to replace rlogin
-and rsh, and provide secure encrypted communications between two untrusted
-hosts over an insecure network.  X11 connections and arbitrary TCP/IP ports
-can also be forwarded over the secure channel.
+executing commands in a remote machine. It is intended to replace
+rlogin and rsh, and provide secure encrypted communications between
+two untrusted hosts over an insecure network. X11 connections and
+arbitrary TCP/IP ports can also be forwarded over the secure channel.
 
 The 'i' form of the package is compiled with internal RSAREF and is
-recommended for use outside the USA, the 'us' form is compiled for external
-RSAREF and should be used within the USA. The 'us' version does not have the
-IDEA encryption compiled in.
+recommended for use outside the USA, the 'us' form is compiled for
+external RSAREF and should be used within the USA. The 'us' version
+does not have the IDEA encryption compiled in.
 
-This is a base package. You will need to install at least one of ssh-clients
-and ssh-server to really use ssh.
+This is a base package. You will need to install at least one of
+ssh-clients and ssh-server to really use ssh.
 
 %description -l pl
 Ssh (Secure Shell) jest programem s³u¿±cym do logowania siê na zdaln±
-maszynê i do wykonywania na niej komend. Polecany jest jako zamiennik dla
-rlogin i rsh poniewa¿ koduje ca³± transmisjê. Poza tym pozawala na
+maszynê i do wykonywania na niej komend. Polecany jest jako zamiennik
+dla rlogin i rsh poniewa¿ koduje ca³± transmisjê. Poza tym pozawala na
 forwardowanie a przy okazji i kodowanie transmisji X11. Ta wersja ma
 wsparcie dla PAM i systemu Kerberos V5.
 
-Jest to jedynie pakiet podstawowy - je¶li chcesz korzystaæ z ssh musisz
-zainstalowaæ tak¿e pakiet ssh-clients oraz ssh-server.
+Jest to jedynie pakiet podstawowy - je¶li chcesz korzystaæ z ssh
+musisz zainstalowaæ tak¿e pakiet ssh-clients oraz ssh-server.
 
 %package clients
 Summary:	Clients for connecting to Secure Shell servers
 Summary(pl):	Klient pozwalaj±cy na pod³±czenie siê do serwera Secure Shell
-Group:		Utilities
-Group(pl):	Narzêdzia
+Group:		Applications
+Group(de):	Applikationen
+Group(pl):	Aplikacje
 Requires:	%{name} = %{version} 
 
 %description clients
-This package includes the clients necessary to make encrypted connections
-to SSH servers.
+This package includes the clients necessary to make encrypted
+connections to SSH servers.
 
 %description -l pl clients
 Oprogramowanie klienckie dla ssh.
@@ -66,6 +70,7 @@ Oprogramowanie klienckie dla ssh.
 Summary:	Secure Shell protocol server (sshd)
 Summary(pl):	Serwer (sshd) protoko³u Secure Shell
 Group:		Daemons
+Group(de):	Server
 Group(pl):	Serwery
 Requires:	pam >= 0.66
 Prereq:		/sbin/chkconfig
@@ -78,30 +83,31 @@ The sshd is the server part of the secure shell protocol and allows
 ssh clients to connect to your host.
 
 %description -l pl server
-Pakiet zawiera daemon Secure Shell oraz dokumentacjê. Sshd jest serwerem 
-protoko³u Secure Shell umo¿liwiaj±cym pod³±czanie siê klientów do 
-Twojego hosta.
+Pakiet zawiera daemon Secure Shell oraz dokumentacjê. Sshd jest
+serwerem protoko³u Secure Shell umo¿liwiaj±cym pod³±czanie siê
+klientów do Twojego hosta.
 
 %package extras
 Summary:	Extra command for the secure shell protocol suite
 Summary(pl):	Dodatkowe komendy dla obs³ugi protoko³u Secure Shell
-Group:		Utilities
-Group(pl):	Narzêdzia
+Group:		Applications
+Group(de):	Applikationen
+Group(pl):	Aplikacje
 Requires:	%{name} = %{version}
 
 %description extras
-This package contains the make_ssh_known_hosts perl script,
-the ssh-askpass command and its documentation. They were moved
-to the separate package to allow clean install of ssh even
-on X11-less and perl-less machines (make_ssh_known_hosts is a perl script
-and ssh-askpass uses X11 libraries.
+This package contains the make_ssh_known_hosts perl script, the
+ssh-askpass command and its documentation. They were moved to the
+separate package to allow clean install of ssh even on X11-less and
+perl-less machines (make_ssh_known_hosts is a perl script and
+ssh-askpass uses X11 libraries.
 
 %description -l pl extras
-Pakiet zawiera skrypt perlowy make_ssh_known_hosts, ssh-askpass oraz 
-dokumentacjê. Zosta³y przeniesione do oddzielnego pakietu co umo¿liwi³o 
-instalowanie ssh nawet na maszynach nie posiadaj±cych X11 oraz perl'a 
-(make_ssh_known_hosts jest skryptem perlowym a ssh-askpass u¿ywa 
-bibliotek X11).
+Pakiet zawiera skrypt perlowy make_ssh_known_hosts, ssh-askpass oraz
+dokumentacjê. Zosta³y przeniesione do oddzielnego pakietu co
+umo¿liwi³o instalowanie ssh nawet na maszynach nie posiadaj±cych X11
+oraz perl'a (make_ssh_known_hosts jest skryptem perlowym a ssh-askpass
+u¿ywa bibliotek X11).
 
 %define _sysconfdir /etc/ssh
 
