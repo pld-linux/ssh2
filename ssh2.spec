@@ -1,12 +1,13 @@
+%define	base_name	ssh
 Summary:	Secure Shell - encrypts network communications with ipv6 support.
 Summary(pl):	Secure Shell - kodowane po³±czenie sieciowe ze wsparciem dla IPv6
-Name:		ssh
+Name:		%{base_name}2
 Version:	2.0.13
-Release:	1
+Release:	2
 Group:		Utilities
 Group(pl):	Narzêdzia
 Copyright:	Non-commercially distributable
-Source0:	ftp://ftp.cs.hut.fi/pub/ssh/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.cs.hut.fi/pub/ssh/%{base_name}-%{version}.tar.gz
 Source1:	sshd.init
 Source2:	ssh.pam
 Source3:	sshd.conf
@@ -18,7 +19,7 @@ URL:		http://www.cs.hut.fi/ssh/
 BuildPrereq:	gmp-devel
 BuildPrereq:	zlib-devel
 BuildPrereq:	xauth
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{base_name}-%{version}-root
 
 %define	_prefix	/usr
 
@@ -104,7 +105,7 @@ bibliotek X11).
 %define _sysconfdir /etc/ssh
 
 %prep
-%setup -q
+%setup -q -n%{base_name}-%{version}
 
 %patch -p0
 
@@ -125,7 +126,7 @@ LDFLAGS="-s"; export LDFLAGS
 make
 
 %install
-#cd %name-%version
+
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/{%{_mandir},etc/{ssh,pam.d,rc.d/init.d}}
@@ -141,16 +142,19 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/sshd
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/ssh_config
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/sshd_config
 
-#echo .so ssh2.1 > $RPM_BUILD_ROOT%{_mandir}/man1/slogin.1
-
-mv -f $RPM_BUILD_ROOT%{_mandir}/man8/sshd2.8 \
-	$RPM_BUILD_ROOT%{_mandir}/man8/sshd.8
+rm $RPM_BUILD_ROOT%{_mandir}/man8/sshd.8
+cp $RPM_BUILD_ROOT%{_mandir}/man8/sshd2.8 $RPM_BUILD_ROOT%{_mandir}/man8/sshd.8
 
 gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man[18]/* \
 	CHANGES BUG.REPORT SSH2.QUICKSTART README* FAQ
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%pre server
+if [ -f /etc/ssh/ssh_config ]; then
+   mv /etc/ssh/ssh_config /etc/ssh/ssh1_config
+fi
 
 %post server
 /sbin/chkconfig --add sshd
@@ -220,6 +224,10 @@ fi
 %{_mandir}/man1/ssh.1*
 
 %changelog
+* Tue Jun  8 1999 Wojciech "Sas" Ciêciwa <cieciwa@alpha.zarz.agh.edu.pl>
+  [2.0.13-2]
+- fixing file locations.
+
 * Wed Jun  2 1999 Wojciech "Sas" Ciêciwa <cieciwa@alpha.zarz.agh.edu.pl>
   [2.0.13-1]
 - building rpm based on ssh.spec from PLD.
