@@ -66,7 +66,7 @@ Summary:	Secure Shell protocol server (sshd)
 Summary(pl):	Serwer (sshd) protoko³u Secure Shell
 Group:		Daemons
 Provides:	ssh-server
-Requires:	pam >= 0.66
+Requires:	pam >= 0.77.3
 Prereq:		/sbin/chkconfig
 Requires:	%{name} = %{version}
 Prereq:		rc-scripts
