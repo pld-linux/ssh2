@@ -3,9 +3,9 @@ Summary:	Secure Shell - encrypts network communications with ipv6 support.
 Summary(pl):	Secure Shell - kodowane po³±czenie sieciowe ze wsparciem dla IPv6
 Name:		%{base_name}2
 Version:	2.0.13
-Release:	3
+Release:	4
 Group:		Applications
-License:	Non-commercially distributable
+License:	non-commercial
 Source0:	ftp://ftp.cs.hut.fi/pub/ssh/%{base_name}-%{version}.tar.gz
 Source1:	sshd.init
 Source2:	ssh.pamd
@@ -140,8 +140,6 @@ install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/sshd_config
 rm $RPM_BUILD_ROOT%{_mandir}/man8/sshd.8
 cp $RPM_BUILD_ROOT%{_mandir}/man8/sshd2.8 $RPM_BUILD_ROOT%{_mandir}/man8/sshd.8
 
-gzip -9fn CHANGES BUG.REPORT SSH2.QUICKSTART README* FAQ
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -176,43 +174,33 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.gz READM* FAQ.gz
-
+%doc CHANGES BUG.REPORT SSH2.QUICKSTART README* FAQ
 %attr(755,root,root) %{_bindir}/ssh-keygen*
 #%attr(4755,root,root) %{_bindir}/ssh-singer2
 %attr(755,root,root) %{_bindir}/scp*
-
 %{_mandir}/man1/ssh-keygen.1*
 %{_mandir}/man1/scp.1*
-
 %attr(750,root,root) %dir %{_sysconfdir}
 
 %files server
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_sbindir}/sshd*
 %{_mandir}/man8/*
-
 %attr(754,root,root) %config /etc/rc.d/init.d/sshd
-
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/sshd_config
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/pam.d/*
 
 %files extras
 %defattr(644,root,root,755)
-
 %attr(755,root,root) %{_bindir}/ssh-askpass*
 
 %files clients
 %defattr(644,root,root,755)
-
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/ssh_config
-
 %attr(755,root,root) %{_bindir}/ssh
 %attr(755,root,root) %{_bindir}/ssh2
-
 %attr(755,root,root) %{_bindir}/ssh-agent*
 %attr(755,root,root) %{_bindir}/ssh-add*
-
 %{_mandir}/man1/ssh-agent.1*
 %{_mandir}/man1/ssh-add.1*
 %{_mandir}/man1/ssh.1*
