@@ -222,12 +222,3 @@ fi
 %{_mandir}/man1/ssh-agent.1*
 %{_mandir}/man1/ssh-add.1*
 %{_mandir}/man1/ssh.1*
-
-%changelog
-* Tue Jun  8 1999 Wojciech "Sas" Ciêciwa <cieciwa@alpha.zarz.agh.edu.pl>
-  [2.0.13-2]
-- fixing file locations.
-
-* Wed Jun  2 1999 Wojciech "Sas" Ciêciwa <cieciwa@alpha.zarz.agh.edu.pl>
-  [2.0.13-1]
-- building rpm based on ssh.spec from PLD.
