@@ -7,6 +7,7 @@ Release:	0.1
 Group:		Applications
 License:	free use on Linux (see LICENSE)
 Source0:	ftp://ftp.ssh.com/pub/ssh/%{base_name}-%{version}.tar.gz
+# Source0-md5:	d74afd27a5df00ae8fbbe066ec82c88a
 Source1:	sshd.init
 Source2:	ssh.pamd
 Source3:	sshd.conf
