@@ -5,7 +5,7 @@ Name:		%{base_name}2
 Version:	3.2.3
 Release:	0.1
 Group:		Applications
-License:	non-commercial (see LICENSE)
+License:	free use on Linux (see LICENSE)
 Source0:	ftp://ftp.ssh.com/pub/ssh/%{base_name}-%{version}.tar.gz
 Source1:	sshd.init
 Source2:	ssh.pamd
