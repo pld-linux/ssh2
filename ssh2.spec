@@ -153,7 +153,11 @@ if [ -f /etc/ssh/ssh_config ]; then
 fi
 
 %post server
-NAME=sshd; %chkconfig_add
+/sbin/chkconfig --add sshd
+
+if [ -f /var/run/sshd.pid ]; then
+    /etc/rc.d/init.d/sshd restart >&2
+fi
 
 %post
 if [ ! -f %{_sysconfdir}/ssh_host_key -o ! -s %{_sysconfdir}/ssh_host_key ]; then
@@ -167,7 +171,10 @@ if [ ! -f %{_sysconfdir}/ssh_host_key -o ! -s %{_sysconfdir}/ssh_host_key ]; the
 fi  
 
 %preun server
-NAME=sshd; %chkconfig_del
+if [ "$1" = 0 ]; then
+	/etc/rc.d/init.d/sshd stop >&2
+	/sbin/chkconfig --del sshd
+fi
 
 %files
 %defattr(644,root,root,755)
