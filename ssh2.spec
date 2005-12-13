@@ -196,8 +196,8 @@ fi
 %{_mandir}/man5/sshd*.5*
 %{_mandir}/man8/*
 %attr(754,root,root) %config /etc/rc.d/init.d/sshd
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/sshd2_config
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/pam.d/*
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/sshd2_config
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/*
 
 %files extras
 %defattr(644,root,root,755)
@@ -205,7 +205,7 @@ fi
 
 %files clients
 %defattr(644,root,root,755)
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/ssh2_config
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ssh2_config
 %attr(755,root,root) %{_bindir}/sftp
 %attr(755,root,root) %{_bindir}/sftp2
 %attr(755,root,root) %{_bindir}/ssh
