@@ -4,8 +4,8 @@ Summary(pl):	Secure Shell - kodowane po³±czenie sieciowe ze wsparciem dla IPv6
 Name:		%{base_name}2
 Version:	3.2.9.1
 Release:	0.1
-Group:		Applications
 License:	free use on Linux (see LICENSE)
+Group:		Applications
 Source0:	ftp://ftp.ssh.com/pub/ssh/%{base_name}-%{version}.tar.gz
 # Source0-md5:	f3ed49f13419d97dc1d0d3bfb4bb99bf
 Source1:	sshd.init
@@ -20,6 +20,7 @@ BuildRequires:	automake
 BuildRequires:	libwrap-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	pam-devel
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	xauth
 # it uses internal zlib with functions renamed by hacks
 #BuildRequires:	zlib-devel
@@ -51,8 +52,8 @@ musisz zainstalowaæ tak¿e pakiet ssh-clients oraz ssh-server.
 Summary:	Clients for connecting to Secure Shell servers
 Summary(pl):	Klient pozwalaj±cy na pod³±czenie siê do serwera Secure Shell
 Group:		Applications
+Requires:	%{name} = %{version}-%{release}
 Provides:	ssh-clients
-Requires:	%{name} = %{version}
 
 %description clients
 This package includes the clients necessary to make encrypted
@@ -65,11 +66,11 @@ Oprogramowanie klienckie dla ssh.
 Summary:	Secure Shell protocol server (sshd)
 Summary(pl):	Serwer (sshd) protoko³u Secure Shell
 Group:		Daemons
-Provides:	ssh-server
+Requires(post,preun):	/sbin/chkconfig
+Requires:	%{name} = %{version}-%{release}
 Requires:	pam >= 0.77.3
-Prereq:		/sbin/chkconfig
-Requires:	%{name} = %{version}
-Prereq:		rc-scripts
+Requires:	rc-scripts
+Provides:	ssh-server
 
 %description server
 This package contains the secure shell daemon and its documentation.
@@ -85,7 +86,7 @@ klientów do Twojego hosta.
 Summary:	Extra commands for the secure shell protocol suite
 Summary(pl):	Dodatkowe polecenia dla obs³ugi protoko³u Secure Shell
 Group:		Applications
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description extras
 This package contains the make_ssh_known_hosts perl script, the
@@ -152,17 +153,14 @@ fi
 
 %post server
 /sbin/chkconfig --add sshd
-
-if [ -f /var/run/sshd.pid ]; then
-	/etc/rc.d/init.d/sshd restart >&2
-fi
+%service sshd restart
 
 %post
 if [ ! -f %{_sysconfdir}/ssh_host_key -o ! -s %{_sysconfdir}/ssh_host_key ]; then
-	if [ -f /etc/ssh_host_key -a -s /etc/ssh_host_key ]; then
-		mv -f /etc/ssh_host_key /etc/ssh_host_key.pub %{_sysconfdir} || :
-		mv -f /etc/ssh_known_hosts %{_sysconfdir} >/dev/null 2>&1 ||:
-		mv -f /etc/ssh_random_seed %{_sysconfdir} >/dev/null 2>&1 ||:
+	if [ -f /etc/ssh_host_key -a -s %{_sysconfdir}_host_key ]; then
+		mv -f /etc/ssh_host_key %{_sysconfdir}_host_key.pub %{_sysconfdir} || :
+		mv -f /etc/ssh_known_hosts %{_sysconfdir} >/dev/null 2>&1 || :
+		mv -f /etc/ssh_random_seed %{_sysconfdir} >/dev/null 2>&1 || :
 	else
 		%{_bindir}/ssh-keygen -b 1024 -f %{_sysconfdir}/ssh_host_key -N '' >&2
 	fi
@@ -170,7 +168,7 @@ fi
 
 %preun server
 if [ "$1" = 0 ]; then
-	/etc/rc.d/init.d/sshd stop >&2
+	%service sshd stop
 	/sbin/chkconfig --del sshd
 fi
 
