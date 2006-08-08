@@ -104,7 +104,7 @@ u¿ywa bibliotek X11).
 
 %prep
 %setup -q -n%{base_name}-%{version}
-%patch -p1
+%patch0 -p1
 
 %build
 %{__aclocal}
