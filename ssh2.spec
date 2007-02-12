@@ -1,6 +1,6 @@
 %define	base_name	ssh
 Summary:	Secure Shell - encrypts network communications with ipv6 support
-Summary(pl):	Secure Shell - kodowane po³±czenie sieciowe ze wsparciem dla IPv6
+Summary(pl.UTF-8):   Secure Shell - kodowane poÅ‚Ä…czenie sieciowe ze wsparciem dla IPv6
 Name:		%{base_name}2
 Version:	3.2.9.1
 Release:	0.1
@@ -38,19 +38,19 @@ arbitrary TCP/IP ports can also be forwarded over the secure channel.
 This is a base package. You will need to install at least one of
 ssh-clients and ssh-server to really use ssh.
 
-%description -l pl
-Ssh (Secure Shell) jest programem s³u¿±cym do logowania siê na zdaln±
-maszynê i do wykonywania na niej poleceñ. Polecany jest jako zamiennik
-dla rlogin i rsh poniewa¿ koduje ca³± transmisjê. Poza tym pozawala na
+%description -l pl.UTF-8
+Ssh (Secure Shell) jest programem sÅ‚uÅ¼Ä…cym do logowania siÄ™ na zdalnÄ…
+maszynÄ™ i do wykonywania na niej poleceÅ„. Polecany jest jako zamiennik
+dla rlogin i rsh poniewaÅ¼ koduje caÅ‚Ä… transmisjÄ™. Poza tym pozawala na
 forwardowanie a przy okazji i kodowanie transmisji X11. Ta wersja ma
 wsparcie dla PAM.
 
-Jest to jedynie pakiet podstawowy - je¶li chcesz korzystaæ z ssh
-musisz zainstalowaæ tak¿e pakiet ssh-clients oraz ssh-server.
+Jest to jedynie pakiet podstawowy - jeÅ›li chcesz korzystaÄ‡ z ssh
+musisz zainstalowaÄ‡ takÅ¼e pakiet ssh-clients oraz ssh-server.
 
 %package clients
 Summary:	Clients for connecting to Secure Shell servers
-Summary(pl):	Klient pozwalaj±cy na pod³±czenie siê do serwera Secure Shell
+Summary(pl.UTF-8):   Klient pozwalajÄ…cy na podÅ‚Ä…czenie siÄ™ do serwera Secure Shell
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	ssh-clients
@@ -59,12 +59,12 @@ Provides:	ssh-clients
 This package includes the clients necessary to make encrypted
 connections to SSH servers.
 
-%description clients -l pl
+%description clients -l pl.UTF-8
 Oprogramowanie klienckie dla ssh.
 
 %package server
 Summary:	Secure Shell protocol server (sshd)
-Summary(pl):	Serwer (sshd) protoko³u Secure Shell
+Summary(pl.UTF-8):   Serwer (sshd) protokoÅ‚u Secure Shell
 Group:		Daemons
 Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name} = %{version}-%{release}
@@ -77,14 +77,14 @@ This package contains the secure shell daemon and its documentation.
 The sshd is the server part of the secure shell protocol and allows
 ssh clients to connect to your host.
 
-%description server -l pl
-Pakiet zawiera daemon Secure Shell oraz dokumentacjê. Sshd jest
-serwerem protoko³u Secure Shell umo¿liwiaj±cym pod³±czanie siê
-klientów do Twojego hosta.
+%description server -l pl.UTF-8
+Pakiet zawiera daemon Secure Shell oraz dokumentacjÄ™. Sshd jest
+serwerem protokoÅ‚u Secure Shell umoÅ¼liwiajÄ…cym podÅ‚Ä…czanie siÄ™
+klientÃ³w do Twojego hosta.
 
 %package extras
 Summary:	Extra commands for the secure shell protocol suite
-Summary(pl):	Dodatkowe polecenia dla obs³ugi protoko³u Secure Shell
+Summary(pl.UTF-8):   Dodatkowe polecenia dla obsÅ‚ugi protokoÅ‚u Secure Shell
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 
@@ -95,12 +95,12 @@ separate package to allow clean install of ssh even on X11-less and
 perl-less machines (make_ssh_known_hosts is a perl script and
 ssh-askpass uses X11 libraries).
 
-%description extras -l pl
+%description extras -l pl.UTF-8
 Pakiet zawiera skrypt perlowy make_ssh_known_hosts, ssh-askpass oraz
-dokumentacjê. Zosta³y przeniesione do oddzielnego pakietu co
-umo¿liwi³o instalowanie ssh nawet na maszynach nie posiadaj±cych X11
+dokumentacjÄ™. ZostaÅ‚y przeniesione do oddzielnego pakietu co
+umoÅ¼liwiÅ‚o instalowanie ssh nawet na maszynach nie posiadajÄ…cych X11
 oraz perla (make_ssh_known_hosts jest skryptem perlowym a ssh-askpass
-u¿ywa bibliotek X11).
+uÅ¼ywa bibliotek X11).
 
 %prep
 %setup -q -n%{base_name}-%{version}
