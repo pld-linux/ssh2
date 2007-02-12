@@ -1,6 +1,6 @@
 %define	base_name	ssh
 Summary:	Secure Shell - encrypts network communications with ipv6 support
-Summary(pl.UTF-8):   Secure Shell - kodowane połączenie sieciowe ze wsparciem dla IPv6
+Summary(pl.UTF-8):	Secure Shell - kodowane połączenie sieciowe ze wsparciem dla IPv6
 Name:		%{base_name}2
 Version:	3.2.9.1
 Release:	0.1
@@ -50,7 +50,7 @@ musisz zainstalować także pakiet ssh-clients oraz ssh-server.
 
 %package clients
 Summary:	Clients for connecting to Secure Shell servers
-Summary(pl.UTF-8):   Klient pozwalający na podłączenie się do serwera Secure Shell
+Summary(pl.UTF-8):	Klient pozwalający na podłączenie się do serwera Secure Shell
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	ssh-clients
@@ -64,7 +64,7 @@ Oprogramowanie klienckie dla ssh.
 
 %package server
 Summary:	Secure Shell protocol server (sshd)
-Summary(pl.UTF-8):   Serwer (sshd) protokołu Secure Shell
+Summary(pl.UTF-8):	Serwer (sshd) protokołu Secure Shell
 Group:		Daemons
 Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name} = %{version}-%{release}
@@ -84,7 +84,7 @@ klientów do Twojego hosta.
 
 %package extras
 Summary:	Extra commands for the secure shell protocol suite
-Summary(pl.UTF-8):   Dodatkowe polecenia dla obsługi protokołu Secure Shell
+Summary(pl.UTF-8):	Dodatkowe polecenia dla obsługi protokołu Secure Shell
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 
