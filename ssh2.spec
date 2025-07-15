@@ -104,7 +104,7 @@ używa bibliotek X11).
 
 %prep
 %setup -q -n%{base_name}-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__aclocal}
